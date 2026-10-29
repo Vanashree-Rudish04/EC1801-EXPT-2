@@ -67,7 +67,8 @@ endmodule
 
 ```
  
-<img width="940" height="318" alt="image" src="https://github.com/user-attachments/assets/8a343bdb-ffb4-4aac-8b88-cf59eca374a8" />
+<img width="1237" height="497" alt="image_1c91cbf3 (1)" src="https://github.com/user-attachments/assets/b9069348-d593-40f4-acb8-2d0a45fd630d" />
+
 
 # Simulation Procedure
 STEP 1 – Open Terminal
