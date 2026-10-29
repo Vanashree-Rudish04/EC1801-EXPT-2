@@ -21,12 +21,51 @@ File name	Purpose
 logic_gates.v	Logic-gate RTL
 logic_gates_tb.v	All input combinations and VCD generation
  # Verilog  Program
+ ```
+ module basic_gates (
+    input  wire a,
+    input  wire b,
+    output wire y_nand,
+    output wire y_nor,
+    output wire y_xor
+);
+    assign y_nand = ~(a & b);
+    assign y_nor  = ~(a | b);
+    assign y_xor  =  a ^ b;
+endmodule
+ ```
 
 # **Test Bench Program**
+```
+module tb2;
+    reg  a, b;
+    wire y_nand, y_nor, y_xor;
 
+    basic_gates uut (
+        .a(a),
+        .b(b),
+        .y_nand(y_nand),
+        .y_nor(y_nor),
+        .y_xor(y_xor)
+    );
 
+    initial begin
+        $dumpfile("basic_gates.vcd");
+        $dumpvars(0, tb2);
 
+        $monitor("Time=%0t a=%b b=%b | NAND=%b NOR=%b XOR=%b",
+                 $time, a, b, y_nand, y_nor, y_xor);
 
+        a = 0; b = 0; #10;
+        a = 0; b = 1; #10;
+        a = 1; b = 0; #10;
+        a = 1; b = 1; #10;
+
+        $finish;
+    end
+endmodule
+
+```
  
 <img width="940" height="318" alt="image" src="https://github.com/user-attachments/assets/8a343bdb-ffb4-4aac-8b88-cf59eca374a8" />
 
@@ -77,28 +116,18 @@ Y_OR = A+B
 Y_NOT = A'
 The design was compiled and simulated using Synopsys VCS, and the functionality was verified using DVE waveform analysis, matching the expected truth table.
 Output
+<img width="1917" height="310" alt="Screenshot 2026-10-29 124355" src="https://github.com/user-attachments/assets/7d7995f2-98b3-444c-846d-a1bb1c90fb37" />
+
+
+
+
+
+
+
+
+
 # OUTPUT
+<img width="1920" height="1080" alt="Screenshot 2026-10-29 124552" src="https://github.com/user-attachments/assets/9dbdf4d7-6fe0-45bd-b4a0-3d66485189a9" />
 
 
  
-# Viva-Voce Questions
-
-•	What is a logic gate?
-
-•	What are the basic logic gates in digital electronics?
-
-•	What is the Boolean expression for an AND gate? An OR gate? A NOT gate?
-
-•	Why is the NOT gate also called an inverter?
-
-•	What is a universal gate, and how can NAND/NOR realize AND, OR, and NOT?
-
-•	What is the purpose of a Verilog testbench?
-
-•	Why is a VCD file generated?
-
-•	What is the purpose of ./simv?
-•	What is the purpose of DVE?
-•	What is the difference between simulation and synthesis?
-•	What is the difference between $dumpfile and $dumpvars?
-
