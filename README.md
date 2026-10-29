@@ -1,7 +1,7 @@
 # EXPT 2 - Verification of Logic Gates
-### SIMULATION AND VERIFICATION OF AND, OR, AND NOT GATES
+### SIMULATION AND VERIFICATION OF NAND, NOR, XOR GATES
 ## Aim
-To design, implement, and verify the functionality of basic AND, OR, and NOT logic gates using Verilog HDL, and verify the functionality using Synopsys VCS and DVE.
+To design, implement, and verify the functionality of basic NAND, NOR, and XOR logic gates using Verilog HDL, and verify the functionality using Synopsys VCS and DVE.
 # Software Required
 •	Synopsys VCS
 •	Synopsys DVE
@@ -10,9 +10,9 @@ To design, implement, and verify the functionality of basic AND, OR, and NOT log
 # Boolean Function
 The basic logic gates realize the following Boolean functions:
 
-•	AND: Y_AND = A . B
-•	OR: Y_OR = A + B
-•	NOT: Y_NOT = A'
+•	AND: Y_NAND = ~(a & b)
+•	OR: Y_NOR = ~(a | b)
+•	NOT: Y_XOR = a ^ b
 
 # Theory / Synopsis
 Logic gates are the basic building blocks of digital systems. NAND and NOR are universal gates. XOR produces 1 when its inputs differ, while XNOR produces 1 when its inputs are equal.
@@ -101,20 +101,20 @@ Open the testbench hierarchy.
 Locate the signals: 
 a
 b
-y_and
-y_or
-y_not
+y_NAND
+y_NOR
+y_XOR
 Add the signals to the waveform window.
 Run/inspect the waveform.
-Verify that y_and = 1 only when a=1 AND b=1 — the single combination where both inputs are high.
-Verify that y_or = 1 whenever a=1 OR b=1 (any input high forces the output high).
-Verify that y_not is always the exact complement of a, regardless of b.
+Verify that y_nand = 1 only when a=1 AND b=1 — the single combination where both inputs are high.
+Verify that y_nor = 1 whenever a=1 OR b=1 (any input high forces the output high).
+Verify that y_xor is always the exact complement of a, regardless of b.
 The waveform should agree with the truth table.
 # Expected Result
 The basic logic gates — AND, OR, and NOT — were realized using Verilog HDL:
-Y_AND = A.B
-Y_OR = A+B
-Y_NOT = A'
+Y_NAND =  ~(a & b)
+Y_NOR = ~(a | b)
+Y_XOR =  a ^ b
 The design was compiled and simulated using Synopsys VCS, and the functionality was verified using DVE waveform analysis, matching the expected truth table.
 Output
 <img width="1917" height="310" alt="Screenshot 2026-10-29 124355" src="https://github.com/user-attachments/assets/7d7995f2-98b3-444c-846d-a1bb1c90fb37" />
